@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<readmore id="{{ list_id|e }}" remote="{% if load_more %}true{% endif %}" {% if item_list %} tip="{% if load_more %}Muat Lebih Banyak{% endif %}" {% if load_more %}
+url="http://{{uclite_host}}/uclite/content_list?url=http%3A%2F%2Fwww.huntnews.id%2Fw%2Flist%2FhotNews%3F_fetch_more%3D1%26size%3D3%26chncat%3D{{ list_chncat }}%26_fetch_type%3Dpage%26channel%3DhotNews%26renderarg%3D%26page%3D{{ page|urlencode|e }}%26firstPage%3D{{ first_page|urlencode|e }}%26uc_param_str%3Ddnfrpfbivesscpgimibtbmntnisieijblauputoggdnw%26_pagelets%3Dlist.items%26_t%3D{{ random_time|urlencode|e }}&amp;id={{ list_id|urlencode|e }}" {% endif %}{% endif %} icon="down" button_style="icon-direction:right;icon-space:12">
+        {% for item in item_list %}
+            <news class="news_right_image" ratio="1.58" url="http://{{uclite_host}}/uclite/content/?url={{item.href|urlencode|e}}"
+                  views="{{item.views|e}}"  title="{{item.text|e}}"
+                  publish_time="{{item.time|e}}" target="self">
+                {% if item.img %}
+                    <image src="{{ item.img|e }}"/>
+                {% endif %}
+                {% for img_url in item.img_list %}
+                    <image src="{{ img_url|e }}"/>
+                {% endfor %}
+                    </news>
+        {% endfor %}
+{% if not load_more %}<text style="text-align:center; font-color:#585858">Tidak ada.</text>{% endif %}
+    </readmore>

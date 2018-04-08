@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" ?>
+{% block before_list %}
+{% endblock %}
+<list id="{{ list_id }}"
+      more="http://{{uclite_host}}/uclite/list_append?url=http%3A%2F%2Fwww.huntnews.id%2Fw%2Flist%2F{{ list_key|urlencode|e }}%3F_fetch_more%3D1%26size%3D20%26chncat%3D{{ list_chncat|urlencode|e }}%26_fetch_type%3Dpos%26channel%3D{{ list_key|urlencode|e }}%26renderarg%3D%26_pos%3D{{ last_pos|urlencode|e }}%26uc_param_str%3Ddnfrpfbivesscpgimibtbmntnisieijblauputoggdnw%26_pagelets%3Dlist.items%26_t%3D{{ random_time }}&amp;id={{ list_id|urlencode|e }}&amp;index={{ max_index|urlencode|e }}"
+      {% if not disable_refresh %}
+      refresh="http://{{uclite_host}}/uclite/list_prepend?url=http%3A%2F%2Fwww.huntnews.id%2Fw%2Flist%2F{{ list_key|urlencode|e }}%3F_pos%3D{{ first_pos|urlencode|e }}%26_fetch_more%3D0%26size%3D20%26chncat%3D{{ list_chncat|urlencode|e }}%26renderarg%3D%26uc_param_str%3Ddnfrpfbivesscpgimibtbmntnisieijblauputoggdnw%26_pagelets%3Dlist.items%26_t%3D{{ random_time }}&amp;id={{ list_id|urlencode|e }}" {% endif %}>
+    {% for item in items %}
+        <news id="items_{{ loop.index }}"
+              class="default" url="http://{{uclite_host}}/uclite/{% if item.time|e %}content/{% else %}s_list/{% endif %}?url={{item.href|urlencode|e}}"
+              title="{% if not item.time %}{{ item.index|e }}{% endif %} {{item.text|e}}"
+              views="{{item.views|e}}"
+              uniq_id="{{ item.data_offset|e }}"
+              publish_time="{{item.time|e}}"
+              tag="{{ item.tag|e }}" tag_color="#FF0000" target="self">
+        {% if item.img %}
+            <image src="{{ item.img|e }}"/>
+        {% endif %}
+        {% for img_url in item.img_list %}
+            <image src="{{ img_url|e }}"/>
+        {% endfor %}
+        </news>
+    {% endfor %}
+</list>
+{% block after_list %}
+{% endblock %}

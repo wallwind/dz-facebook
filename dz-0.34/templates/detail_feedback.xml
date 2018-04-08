@@ -1,0 +1,15 @@
+<page id="0" version="1.0" org_title="{{ org_title|e }}" origin="http://huntnews.id" title="{{ title|e }}">
+	<toolbar type="back" style="border-color:#ffdddddd; border-bottom-width:1; background-color:#F4FFFFFF">
+		<button icon="main" target="parent" url="http://{{uclite_host}}/uclite/?url=http%3A%2F%2Fwww.huntnews.id%2Fp%2Findex%3Fuc_param_str%3Ddnfrpfbivesscpgimibtbmntnisieijblauputoggdnw"></button>
+	</toolbar>
+
+	<flexbox style="padding:20;">
+		<text style="text-align:center; font-color:gray">{{ report_title|e }}</text>
+        {% for sec in sections %}
+		<checkbox form="feedback" name="select_reasons" style="padding-top:8;padding-bottom:8" value="{{ sec.value|e }}">{{ sec.text|e }}</checkbox>
+        {% endfor %}
+		<input type="hiden" name="url" value="{{ ref_url|e }}"/>
+		<input form="feedback" name="comment" type="text" style="height:20%; border-radius:3; border-width:1; border-color:#E1E1E1; margin-top:10; padding:5; font-color:#414141" placeholder="{{ placeholder|e }}"/>
+		<button form="feedback" style="background-color:#1997E9; font-color:white; margin-top:20; border-radius:5;" method="post" type="submit" url="http://{{uclite_host}}/uclite/result_feedback/?url=http%3A%2F%2Fwww.huntnews.id%2Fapi%2Ffeedback%3Fuc_param_str%3Ddnfrpfbivesscpgimibtbmntnisieijblauputoggdnw%26type%3Ddetail">{{ btn_text|e }}</button>
+	</flexbox>
+</page>

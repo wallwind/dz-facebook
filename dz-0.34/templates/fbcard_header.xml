@@ -1,0 +1,16 @@
+{% if card_item and card_item.card_user_header %}
+     {% if  card_item.card_user_header.user_name %} username="{{ card_item.card_user_header.user_name|e}}" {% endif %}
+     {% if  card_item.card_user_header.user_name1 %} username="{{ card_item.card_user_header.user_name1|e}}" {% endif %}
+     {% if card_item.card_user_header.user_icon %} portrait="{{ card_item.card_user_header.user_icon|url_img_filter |e}}" {% endif %}
+     {% if card_item.card_user_header.header_href %} profile="{{ card_item.card_user_header.header_href|add_facebook_domain |e}}" {% endif %}
+     {% if card_item.card_user_header.real_info  %} meta="{{ card_item.card_user_header.real_info |e}}" {% endif %}
+     {% if card_item.content %} content="{{ card_item.content|e }}" {% endif %}
+     {% if card_item.card_user_header.meta_type %} meta_type="{{ card_item.card_user_header.meta_type }}" {% endif %}
+     {% if card_item.card_user_header.like_data_store %} user_btn_type="like" user_btn_url="{{ uclite_scheme }}://{{uclite_host}}/uclite/fb_fan_like/?url={{ card_item.card_user_header.like_data_store|get_fan_like_url| add_facebook_domain|e }}&amp;fan=1"  user_btn_forms=""
+        user_btn_cancel_url="{{ uclite_scheme }}://{{uclite_host}}/uclite/fb_fan_like/?url={{ card_item.card_user_header.like_data_store|get_fan_like_url| add_facebook_domain|e  }}&amp;unfan=1"  user_btn_cancel_forms=""
+     {% endif %}
+     {% if card_item.card_user_header.friend_data_store  %} user_btn_type="friend"
+        user_btn_url="{{ uclite_scheme }}://{{uclite_host}}/uclite/fb_add_friend/?url=https%3a%2f%2fm.facebook.com%2fa%2fmobile%2ffriends%2fadd_friend.php" user_btn_forms="{{ card_item.card_user_header.friend_data_store|data_store_to_str|e }}"
+        user_btn_cancel_url="{{ uclite_scheme }}://{{uclite_host}}/uclite/fb_add_friend/?url=https%3a%2f%2fm.facebook.com%2fa%2ffriendrequest%2fcancel%2findex.php" user_btn_cancel_forms="{{ card_item.card_user_header.friend_cancle_data_store|cancel_data_store_to_str|e }}"
+     {% endif %}
+{% endif %}

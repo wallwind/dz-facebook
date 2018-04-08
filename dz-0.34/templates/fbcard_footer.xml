@@ -1,0 +1,15 @@
+{% if card_item.footer %}
+    {% if card_item.footer.like_data_uri %} like_url="{{ uclite_scheme }}://{{uclite_host}}/uclite/fb_like/?url=https%3a%2f%2fm.facebook.com%2fufi%2freaction%2f" {% endif %}
+    {% if card_item.footer.like_data_store %} like_forms="ft_ent_identifier={{ card_item.footer.like_data_store|get_feedback_target }}" {% endif %}
+    {% if card_item.footer.share_url %} share_now_url="{{ uclite_scheme }}://{{uclite_host}}/uclite/fb_share/?url=https://m.facebook.com/a/sharer.php" {% endif %}
+    {% if card_item.footer.share_data_store and card_item.footer.share_url %} share_now_forms="sid={{ card_item.footer.share_data_store | get_share_id}}&amp;{{card_item.footer.share_url|spilt_share|e }}&amp;internal_preview_image_id={{ card_item.footer.share_data_store|internal_preview_image_id |e }}&amp;m=oneclick" {% endif %}
+    {% if card_item.footer.share_write_post_url %} share_write_post_url="{{ card_item.footer.share_write_post_url|add_facebook_domain |e}}" {% endif %}
+    {% if card_item.footer.share_url2 %} share_now_url="{{ uclite_scheme }}://{{uclite_host}}/uclite/fb_share/?url=https://m.facebook.com/a/sharer.php" {% endif %}
+    {% if card_item.footer.share_data_store2 and card_item.footer.share_url2 %} share_now_forms="sid={{ card_item.footer.share_data_store2 | get_share_id}}&amp;{{card_item.footer.share_url2|spilt_share|e }}&amp;internal_preview_image_id={{ card_item.footer.share_data_store2|internal_preview_image_id |e}}&amp;m=oneclick" {% endif %}
+    {% if card_item.footer.share_write_post_url2 %} share_write_post_url="{{ card_item.footer.share_write_post_url2|add_facebook_domain |e}}" {% endif %}
+    {% if card_item.footer.comment_url %} comment_url="{{ card_item.footer.comment_url|add_facebook_domain |e}}" {% endif %}
+    {% if card_item.footer.after_zan %} desp1="{{ card_item.footer.after_zan|e}}" {% endif %}
+    {% if card_item.footer.shares_lists and card_item.footer.shares_lists.comments  %} desp2="{{ card_item.footer.shares_lists.comments}}" {% endif %}
+    {% if card_item.footer.shares_lists and card_item.footer.shares_lists.shares  %} desp3="{{ card_item.footer.shares_lists.shares}}" {% endif %}
+    {% if card_item.footer.aria_pressed %} like_pressed="{{ card_item.footer.aria_pressed}}" {% endif %}
+{% endif %}

@@ -1,0 +1,15 @@
+<page id="0" version="1.0" origin="{{url|e}}"  org_title="Welcome to Facebook">
+	<text style="flex: 0 1 1; height: 44; background-color: #243c6d; font-color: white; text-align: center; text-style: bold; font-size: 22">facebook</text>
+	<flexbox style="flex: 0 1 1; flex-direction:column; align-items:stretch; margin: 0 8; background-color: #eeeeee; border-color:#dddddd; border-width:1">
+		<input style="height: 44; margin: 15 10 0; padding: 10 8 0 10; background-color: white; font-color:#4b4f56; font-size: 16; border-color:#bbbbbb; border-width:1" type="text" placeholder="Email or Phone" form="login" name="email"></input>
+		<input style="height: 44; margin: 0 10 10; padding: 10 8 0 10; background-color: white; font-color:#4b4f56; font-size: 16; border-color:#bbbbbb; border-width:1" type="password" placeholder="Password" form="login" name="pass"></input>
+		<button style="height: 40; margin: 0 10; background-color:#576b95; font-color:white; text-align: center; text-style: bold; border-color:#243c6d; border-radius:8" url="{{ uclite_scheme }}://{{uclite_host}}/uclite/fb_login/?url=https%3a%2f%2fm.facebook.com%2flogin%2fasync%2f%3fnext%3dhttps%253A%252F%252Fm.facebook.com%252Fhome.php%253Fsoft%253Dbookmarks40%25refsrc%3dhttps%253A%252F%252Fm.facebook.com%252F40%25lwv%3d100" target="ajax" form="login" method="post" type="loading">Log In</button>
+		<button style="align-self: center; padding: 0 20; height: 40; margin: 35 0 0; background-color:#5b93fc; font-color:white; text-align: center; text-style: bold; border-color:#243c6d; border-radius:8" url="https://m.facebook.com/reg/?cid=103%40refid=8">Create New Account</button>
+		<flexbox style="flex: 1 1; justify-content: center; margin: 15 0 40">
+			<button style="font-color: #7596c8;" url="https://m.facebook.com/login/identify/?ctx=recover">Forgot Password? · </button>
+			<button style="font-color: #7596c8;" url="https://m.facebook.com/help/?refid=8">Help Center</button>
+		</flexbox>
+	</flexbox>
+
+	<text style="flex: 0 1 1; font-color: gray; text-align: center; font-size: 12">Facebook © 2016</text>
+</page>

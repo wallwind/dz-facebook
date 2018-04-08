@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<readmore id="{{ list_id }}" remote="true" {% if item_list %} tip="Muat Lebih Banyak"
+url="http://{{uclite_host}}/uclite/content_list?url=http%3A%2F%2Fwww.huntnews.id%2Fw%2Flist%2F{{ list_key|urlencode|e }}%3F_fetch_more%3D1%26size%3D3%26chncat%3D{{ list_chncat|urlencode|e }}%26_fetch_type%3Dpos%26channel%3D{{ list_key|urlencode|e }}%26renderarg%3DshowPercent%26_pos%3D{{ last_pos|urlencode|e }}%26uc_param_str%3Ddnfrpfbivesscpgimibtbmntnisieijblauputoggdnw%26_pagelets%3Dlist.items%26_t%3D0.6183808775334203{{ random_time }}&amp;id=next_list" {% endif %} icon="down" button_style="icon-direction:right;icon-space:12">
+        {% for item in item_list %}
+            <news class="news_right_image" ratio="1.58" url="http://{{uclite_host}}/uclite/content/?url={{item.href|urlencode|e}}"
+                  relate_views="{{item.percent|e}}"  title="{{item.text|e}}"
+                  meta="{{item.meta|replace('&nbsp','')|strip|e}}"  target="self">
+                {% if item.img %}
+                    <image src="{{ item.img|e }}"/>
+                {% endif %}
+                {% for img_url in item.img_list %}
+                    <image src="{{ img_url|e }}"/>
+                {% endfor %}
+                    </news>
+        {% endfor %}
+    </readmore>

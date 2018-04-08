@@ -1,0 +1,13 @@
+{% extends "list_page_list.xml" %}
+{% block before_list %}
+<page id="0" version="1.0" url="{{url|e}}" org_title="{{ org_title|e }}" icon="http://www.huntnews.id/public/c/widget/header/img/logo-id_9da0d99.png"
+      title="{{ title|e }}">
+    <toolbar type="back" style="border-color:#ffdddddd; border-bottom-width:1; background-color:#F4FFFFFF">
+        <button icon="main" target="parent"> </button>
+    </toolbar>
+
+<h>{{ subtitle|e }}</h>
+{% endblock %}
+{% block after_list %}
+</page>
+{% endblock %}

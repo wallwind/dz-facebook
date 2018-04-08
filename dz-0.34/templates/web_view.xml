@@ -1,0 +1,3 @@
+<page id="0" version="1.0" origin="http://huntnews.id" icon="http://www.huntnews.id/public/c/widget/header/img/logo-id_9da0d99.png" >
+	<web url="{{ url|e }}" style="height:100%"></web>
+</page>

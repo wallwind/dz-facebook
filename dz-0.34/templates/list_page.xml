@@ -1,0 +1,19 @@
+{% extends "list_page_list.xml" %}
+{% block before_list %}
+<page id="0" version="1.0" origin="{{url|e}}" org_title="{{ org_title|e }}" icon="http://www.huntnews.id/public/c/widget/header/img/logo-id_9da0d99.png"
+      title="{{ title|e }}">
+    <toolbar id="1" type="home">
+        <button id="5" url="http://{{uclite_host}}/uclite/feedback_index?url=http%3A%2F%2Fwww.huntnews.id%2Fp%2Ffeedback%3Ftype%3Dindex%26uc_param_str%3Ddnfrpfbivesscpgimibtbmntnisieijblauputoggdnw&amp;ref={{ url|urlencode|e }}"
+                icon="feedback" target="blank"/>
+    </toolbar>
+    <tabbar id="tab">
+      {% for tab in tabs %}
+            <button id="tab_{{ loop.index }}" url="http://{{uclite_host}}/uclite/?url={{ tab.href|urlencode|e }}"
+                    selected="{{ tab.focus|e }}" target="ajax">{{tab.text|e}}</button>
+       {% endfor %}
+    </tabbar>
+{% endblock %}
+
+{% block after_list %}
+</page>
+{% endblock %}

@@ -1,0 +1,4 @@
+{% if card_item.header_title and  card_item.header_title.title %} title="{{ card_item.header_title.title |e}}" {% endif %}
+{% if card_item.header_title and  card_item.header_title.title1 %} title="{{ card_item.header_title.title1 |e}}" {% endif %}
+{% if card_item.header_title and  card_item.header_title.title2 %} title="{{ card_item.header_title.title2 |e}}" {% endif %}
+{% if card_item.header_title1  %} title="{{card_item.header_title1 |e}}" {% endif %}

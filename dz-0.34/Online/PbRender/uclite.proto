@@ -1,0 +1,53 @@
+package uclite;
+
+option java_package = "com.uc.application.uclite.protobuf";
+option java_outer_classname = "Components";
+
+//标签类型
+enum ComponentType {
+	ComPageType = 0;
+	ComToolbarType = 1;
+	ComTabbarType = 2;
+	ComCardType = 3;
+	ComNewsType = 4;
+	ComFlexboxType = 5;
+	ComListType = 6;
+	ComButtonType = 7;
+	ComTextType = 8;
+	ComImageType = 9;
+	ComInfoType = 10;
+	ComNavType = 11;
+	ComHType = 12;
+	ComWebType = 13;
+	ComFooterType = 14;
+	ComInputType = 15;
+	ComCheckboxType = 16;
+	ComStyleType = 17;
+	ComReadmoreType = 18;
+	ComItemType = 19;
+	ComFBCardType = 20;
+}
+//键值对
+message Kv {
+	required string	key	= 1;
+	required string value	= 2;
+}
+//标签组件
+message Component {
+	required ComponentType		type	     =	1;
+	repeated Kv					attrs	     =	2;
+	repeated Component			children     =	3;
+	optional string				inner_text   =	4;
+}
+
+//返回数据
+message Action {
+	required string			cmd	     		=  1;//prepend|replace|append|error|success
+	required string			target      	=  2;//标签id
+	repeated Component		data        	=  3;//标签文档
+	optional string			msg	     		=  4;//
+}
+
+message Result {
+	repeated Action			actions     	=  1;    
+}

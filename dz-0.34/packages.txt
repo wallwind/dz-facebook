@@ -1,0 +1,6 @@
+# 需要安装以下Python包（建议用pip安装）
+Django
+jinja2
+protobuf
+lxml
+requests

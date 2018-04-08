@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<list>
+ {% if  inter_type == 'like'   %}
+    <item type="like"
+      {% if ft_ent_identifier %} ft_ent_identifier="{{ ft_ent_identifier }}" {% endif %}
+      {% if current %} current="{{ current }}" {% endif %}
+      {% if alternate %} alternate="{{ alternate }}" {% endif %}
+      {% if viewerreaction %} viewerreaction="{{ viewerreaction }}" {% endif %}
+      code="{{ code }}">
+</item>
+ {% endif %}
+ {% if  inter_type == 'share' %} <item type="share" code="{{ code }}"></item>{% endif %}
+{% if  inter_type == 'fan_like' %} <item type="fan_like" code="{{ code }}"></item>{% endif %}
+{% if  inter_type == 'add_friend' %}
+    <item type="add_friend" code="{{ code }}"
+        {% if code == '201' %}
+            request_refuse_title="Unable to Send Friend Request" request_refuse_description="This person has reached the friend request limit and can't accept any more."
+        {% endif %}>
+    </item>
+{% endif %}
+</list>

@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<page id="0" version="1.0"  icon="" origin="{{url|e}}" org_title="{{ org_title|e }}" >
+<flexbox style="padding: 0; background-color:#3b5998; align-items:stretch; justify-content: space-around; ">
+		<image style="width: 44; padding: 8; background-color: #4f000000" ratio="1" src="fbtab_feeds" url="https://m.facebook.com"></image>
+		<image style="width: 44; padding: 8" ratio="1" src="fbtab_friends" url="https://m.facebook.com/friends"></image>
+		<image style="width: 44; padding: 8" ratio="1" src="fbtab_message" url="https://m.facebook.com/messages"></image>
+		<image style="width: 44; padding: 8" ratio="1" src="fbtab_notification" url="https://m.facebook.com/notifications"></image>
+		<image style="width: 44; padding: 8" ratio="1" src="fbtab_search" url="https://m.facebook.com/search"></image>
+		<image style="width: 44; padding: 8" ratio="1"  src="fbtab_menu" url="https://m.facebook.com/bookmarks"></image>
+	</flexbox>
+
+	<flexbox style="margin-top: 5;padding: 8; background-color: #eeeeee; border-color:#4b4f56; border-width:1">
+		<button style="font-color:#4b4f56; icon-direction:left; icon-space: 8; padding-right: 10" icon="fb_add_photo" url="{{ input_list.action|add_facebook_domain |e}}&amp;fb_dtsg={{ input_list.fb_dtsg  }}&amp;privacyx={{ input_list.privacyx  }}&amp;target={{ input_list.target  }}&amp;c_src={{ input_list.c_src  }}&amp;cwevent={{ input_list.cwevent  }}&amp;referrer={{ input_list.referrer  }}&amp;ctype={{ input_list.ctype  }}&amp;cver={{ input_list.cver  }}&amp;rst_icv={{ input_list.rst_icv  }}&amp;view_photo={{ input_list.add_photo }}">Add Photos</button>
+		<button style="icon-direction:left; font-color:#4b4f56; padding-right:18; icon-space:8; border-color:#4b4f56; border-left-width:1" icon="fb_location" url="{{ input_list.action|add_facebook_domain |e}}&amp;fb_dtsg={{ input_list.fb_dtsg  }}&amp;privacyx={{ input_list.privacyx  }}&amp;target={{ input_list.target  }}&amp;c_src={{ input_list.c_src  }}&amp;cwevent={{ input_list.cwevent  }}&amp;referrer={{ input_list.referrer  }}&amp;ctype={{ input_list.ctype  }}&amp;cver={{ input_list.cver  }}&amp;rst_icv={{ input_list.rst_icv  }}&amp;view_location={{ input_list.location }}">Location</button>
+		<button style="icon-direction:left; font-color:#4b4f56; padding-right:18;  icon-space:8; border-color:#4b4f56; border-left-width:1" icon="fb_more" url="{{ input_list.action|add_facebook_domain |e}}&amp;fb_dtsg={{ input_list.fb_dtsg  }}&amp;privacyx={{ input_list.privacyx  }}&amp;target={{ input_list.target  }}&amp;c_src={{ input_list.c_src  }}&amp;cwevent={{ input_list.cwevent  }}&amp;referrer={{ input_list.referrer  }}&amp;ctype={{ input_list.ctype  }}&amp;cver={{ input_list.cver  }}&amp;rst_icv={{ input_list.rst_icv  }}&amp;view_overview={{ input_list.overview }}">More</button>
+	</flexbox>
+
+	<flexbox style="flex: 1 1; padding: 5; margin-left: 5; margin-right: 5; background-color: white; border-color:#4b4f56; border-bottom-width:1">
+		<image style="width:50; margin: 0; padding: 5" ratio="1"
+                {% if input_list.head_img %} src="{{ input_list.head_img |url_img_filter |e }}"  {% endif %}
+                {% if input_list.head_href %}  url="{{ input_list.head_href|add_facebook_domain|e }}" {% endif %}>
+        </image>
+		<button style="height: 70; flex: 1 1; font-color: black; align-self:stretch" type="text"
+               {% if input_list and input_list.action%}
+                url="{{ input_list.action|add_facebook_domain |e}}&amp;fb_dtsg={{ input_list.fb_dtsg  }}&amp;privacyx={{ input_list.privacyx  }}&amp;target={{ input_list.target  }}&amp;c_src={{ input_list.c_src  }}&amp;cwevent={{ input_list.cwevent  }}&amp;referrer={{ input_list.referrer  }}&amp;ctype={{ input_list.ctype  }}&amp;cver={{ input_list.cver  }}&amp;rst_icv={{ input_list.rst_icv  }}"
+               {% endif %}>What's on your mind?</button>
+	</flexbox>
+
+	<flexbox style="justify-content: space-between; padding: 5; background-color: #eeeeee;">
+		<image style="width:30" ratio="1" {% if input_list and input_list.privacy%} src="{{ input_list.privacy|url_img_filter |e }}" {% endif %} url="{{ input_list.action|add_facebook_domain |e}}&amp;fb_dtsg={{ input_list.fb_dtsg  }}&amp;privacyx={{ input_list.privacyx  }}&amp;target={{ input_list.target  }}&amp;c_src={{ input_list.c_src  }}&amp;cwevent={{ input_list.cwevent  }}&amp;referrer={{ input_list.referrer  }}&amp;ctype={{ input_list.ctype  }}&amp;cver={{ input_list.cver  }}&amp;rst_icv={{ input_list.rst_icv  }}&amp;view_privacy=">
+        </image>
+		<button style="background-color:#627aba; font-color:white; padding:6 10; border-color:#2e417e; border-radius:3; text-align:center;" url="{{ input_list.action|add_facebook_domain  |e}}&amp;fb_dtsg={{ input_list.fb_dtsg  }}&amp;privacyx={{ input_list.privacyx  }}&amp;target={{ input_list.target  }}&amp;c_src={{ input_list.c_src  }}&amp;cwevent={{ input_list.cwevent  }}&amp;referrer={{ input_list.referrer  }}&amp;ctype={{ input_list.ctype  }}&amp;cver={{ input_list.cver  }}&amp;rst_icv={{ input_list.rst_icv  }}">Post</button>
+	</flexbox>
+
+    <list id="page_list" refresh="{{ uclite_scheme }}://{{uclite_host}}/uclite/time_line/?url=https%3a%2f%2fm.facebook.com%2fstories.php"
+          more="{{ uclite_scheme }}://{{uclite_host}}/uclite/time_line_more?url=https%3a%2f%2fm.facebook.com%2fstories.php%3faftercursor%3d{{ aftercursor }}%26tab%3dh_nor%26__m_log_async__%3d1" method="POST" fb_dtsg="{{ fb_dtsg }}" privacyx="{{ privacyx }}">
+    {% if friend_card_list %}
+    <fbcard type="friend" username="People You May Know"  {% if friend_card_list.more  %}  more_url="{{friend_card_list.more|e }}"  {% endif %}>
+        {% if friend_card_list.add_friend_list %}
+            {% for foo in  friend_card_list.add_friend_list %}
+                <item  {% if foo.image %} portrait="{{ foo.image | url_img_filter|e}}" {% endif %} {% if foo.xout %} close_url="{{ foo.xout |add_facebook_domain|e }}"  close_forms="" {% endif %}
+                    {% if foo.name %} name=" {{ foo.name  }}" {% endif %}  {% if foo.tips %} relate="{{ foo.tips|e }}"  {% endif %}
+                    {% if foo.button_text %} btn_text="{{ foo.button_text|e }}" {% endif %}
+                    {% if foo.add_friend_href %} btn_url="{{ foo.add_friend_href|add_facebook_domain|e}}" {% endif %}
+                    {% if foo.add_friend_data_store %}  btn_forms="{{foo.add_friend_data_store| data_store_to_str|e }}" {% endif %}
+                    btn_cancel_url="{{ uclite_scheme }}://{{uclite_host}}/uclite/fb_add_friend/?url=https%3a%2f%2fm.facebook.com%2fa%2ffriendrequest%2fcancel%2findex.php" {% if foo.cancel_friend %}  btn_cancel_forms="{{ foo.cancel_friend |data_store_to_str |e}}" {% endif %}>
+                </item>
+            {% endfor %}
+        {% endif %}
+    </fbcard>
+    {% endif %}
+    {% if section_list %}
+        {% for section_item in section_list %}
+            {% if section_item.card_list %}
+            {% for card_item in section_item.card_list %}
+                 {% if card_item.content_imgs | length >1 and  card_item.card_user_header and not card_item.slice_card  and not card_item.one_nest  and not card_item.focus_card %}
+                     <fbcard type="photo"
+                         {% include 'fbcard_header.xml' %}{% include 'fbcard_header_title.xml' %}{% include 'fbcard_footer.xml' %}
+                          >
+                    {% for img_item in card_item.content_imgs %}
+                        <item {% if img_item.img_url  %} img="{{ img_item.img_url|url_img_filter|e }}" {% endif %}
+                              {% if img_item.img_style  %} top="{{ img_item.img_style|get_imgs_top }}" left="{{ img_item.img_style|get_imgs_left }}" width="{{ img_item.img_style|get_imgs_width }}" height="{{ img_item.img_style|get_imgs_height }}"  {% endif %}
+                             {% if img_item.img_href  %} url="{{ img_item.img_href|add_facebook_domain|e }}" {% endif %}
+                             {% if img_item.img_style  %} style="{{ img_item.img_style|add_facebook_domain|e }}" {% endif %}>
+                        </item>
+                    {% endfor %}
+                     </fbcard>
+                 {% elif card_item.focus_card and card_item.focus_card.role_name  and card_item.card_user_header  and (card_item.focus_card.like_button or card_item.focus_card.add_friend_store) %}
+                     <fbcard type="focus"
+                         {% include 'fbcard_header.xml' %}{% include 'fbcard_header_title.xml' %}{% include 'fbcard_footer.xml' %}
+                     >
+                          <item
+                             {% if card_item.focus_card.img %}  img="{{ card_item.focus_card.img |url_img_filter|e }}" {% endif %}
+                             {% if card_item.focus_card.role_img %}  icon="{{ card_item.focus_card.role_img |url_img_filter|e }}" icon_width="{{ card_item.focus_card.role_img |share_url_img_width_filter}}" icon_height="{{ card_item.focus_card.role_img |share_url_img_height_filter}}" {% endif %}
+                             {% if card_item.focus_card.card_href %}     url="{{ card_item.focus_card.card_href |e }}" {% endif %}
+                             {% if card_item.focus_card.role_name %}  name="{{ card_item.focus_card.role_name }}" {% endif %}
+                             {% if card_item.focus_card.role_desc %} nick="{{ card_item.focus_card.role_desc |e }}" {% endif %}
+                             {% if card_item.focus_card.role_like %} info="{{ card_item.focus_card.role_like }}" {% endif %}
+                             {% if card_item.focus_card.like_button %} btn_type="like"  btn_url="{{ uclite_scheme }}://{{uclite_host}}/uclite/fb_fan_like/?url={{ card_item.focus_card.like_button|get_fan_like_url| add_facebook_domain|e }}&amp;fan=1"  btn_forms=""
+                                   btn_cancel_url="{{ uclite_scheme }}://{{uclite_host}}/uclite/fb_fan_like/?url={{ card_item.focus_card.like_button|get_fan_like_url| add_facebook_domain|e  }}&amp;unfan=1"  btn_cancel_forms=""
+                             {% endif %}
+                             {% if card_item.focus_card.add_friend_store  %}  btn_type="friend"
+                                   btn_url="{{ uclite_scheme }}://{{uclite_host}}/uclite/fb_add_friend/?url=https%3a%2f%2fm.facebook.com%2fa%2fmobile%2ffriends%2fadd_friend.php" btn_forms="{{ card_item.focus_card.add_friend_store|data_store_to_str|e }}"  {% endif %}
+                             {% if card_item.focus_card.cancel_friend_store  %} btn_cancel_url="{{ uclite_scheme }}://{{uclite_host}}/uclite/fb_add_friend/?url=https%3a%2f%2fm.facebook.com%2fa%2ffriendrequest%2fcancel%2findex.php" btn_cancel_forms="{{ card_item.focus_card.cancel_friend_store|cancel_data_store_to_str|e }}"
+                             {% endif %}
+                            >
+                          </item>
+                     </fbcard>
+                 {% elif card_item.share_info %}
+                     <fbcard type="link"
+                             {% include 'fbcard_header.xml' %}{% include 'fbcard_header_title.xml' %}{% include 'fbcard_footer.xml' %}
+                     >
+                         <item
+                               {% if card_item.share_info.share_image %} img="{{card_item.share_info.share_image| url_img_filter|e }}"
+                                    width="{{ card_item.share_info.share_image|share_url_img_width_filter |e}}"
+                                    height="{{ card_item.share_info.share_image|share_url_img_height_filter |e }}"
+                               {% endif %}
+                               {% if card_item.share_info.share_image_play %} play="{{card_item.share_info.share_image_play| url_img_filter|e }}"
+                                    play_width="{{ card_item.share_info.share_image_play|share_url_img_width_filter |e}}"
+                                    play_height="{{ card_item.share_info.share_image_play|share_url_img_height_filter |e }}"
+                               {% endif %}
+                                {% if card_item.share_info.share_image1 %}           img="{{card_item.share_info.share_image1| url_img_filter|e }}"
+                                        width="{{ card_item.share_info.share_image1|share_url_img_width_filter |e}}"
+                                        height="{{ card_item.share_info.share_image1|share_url_img_height_filter |e }}"
+                                {% endif %}
+                               {% if card_item.share_info.share_content_href %}     url="{{card_item.share_info.share_content_href|e }}" {% endif %}
+                               {% if card_item.share_info.share_title1 %}           desc="{{card_item.share_info.share_title1 |e }}" {% endif %}
+                               {% if card_item.share_info.share_from1 %}            from="{{card_item.share_info.share_from1 |e }}"  {% endif %}
+                               {% if card_item.share_info.share_intro1 %}           extra="{{card_item.share_info.share_intro1 |e }}" {% endif %}
+                               {% if card_item.share_info.share_title %}            desc="{{card_item.share_info.share_title |e }}" {% endif %}
+                               {% if card_item.share_info.share_from %}             from="{{card_item.share_info.share_from |e }}"  {% endif %}
+                               {% if card_item.share_info.share_intro %}            extra="{{card_item.share_info.share_intro |e }}" {% endif %}
+                               {% if card_item.share_info.share_title2 %}           desc="{{card_item.share_info.share_title2 |e }}" {% endif %}
+                               {% if card_item.share_info.share_intro2 %}           extra="{{card_item.share_info.share_intro2 |e }}" {% endif %}
+                               {% if card_item.share_info.share_title3 %}           desc="{{card_item.share_info.share_title3 |e }}" {% endif %}
+                               {% if card_item.share_info.share_title4 %}           desc="{{card_item.share_info.share_title4 |e }}" {% endif %}
+                               {% if card_item.share_info.share_intro3 %}           extra="{{card_item.share_info.share_intro3 |e }}" {% endif %}
+
+                          >
+                          </item>
+                     </fbcard>
+                 {% elif card_item.content_img and card_item.card_user_header and not card_item.share_info and not card_item.focus_card%}
+                      <fbcard type="photo"
+                         {% include 'fbcard_header.xml' %}{% include 'fbcard_header_title.xml' %}{% include 'fbcard_footer.xml' %}
+                          >
+                      <item {% if card_item.content_img.url  %} url="{{ card_item.content_img.url|add_facebook_domain|e }}" {% endif %}
+                            {% if card_item.content_img.style  %} width="{{ card_item.content_img.style |get_img_width | e }}" height="{{ card_item.content_img.style |get_img_height | e }}" {% endif %}
+                            {% if card_item.content_img.img  %} img="{{ card_item.content_img.img |url_img_filter|e }}" {% endif %}
+                             >
+                      </item>
+                     </fbcard>
+                 {% elif card_item.slice_card |length >1 %}<!-- 滑动卡片-->
+                    <!-- 横向滑动begin-->
+                    {% for slice_item in card_item.slice_card %}
+                         <fbcard type="focus"
+                             {% if slice_item.user_header_img %} portrait="{{  slice_item.user_header_img | url_img_filter |e}}" {% endif %}
+                             {% if slice_item.like_this %} title="{{ slice_item.like_this |e }}" {% endif %}
+                             {% if slice_item.user_name %} username="{{  slice_item.user_name |e}}" {% endif %}
+                             {% if slice_item.user_name_href %} profile="{{  slice_item.user_name_href |add_facebook_domain|e}}" {% endif %}
+                             {% if slice_item.info %} meta="{{  slice_item.info |e}}" {% endif %}
+                             {% if slice_item.content %} content="{{  slice_item.content |e}}" {% endif %} >
+                               <item {% if slice_item.content_img %} img="{{ slice_item.content_img |url_img_filter |e }}" width="{{ slice_item.content_img |share_url_img_width_filter }} " height="{{slice_item.content_img |share_url_img_height_filter }}"  {% endif %}
+                                   {% if slice_item.user_name_href %} url="{{ slice_item.user_name_href |add_facebook_domain |e }}" {% endif %}
+                                      icon="" icon_width="" icon_height=""
+                                   {% if slice_item.down_img_content %} name="{{ slice_item.down_img_content |e }}" {% endif %}
+                                   {% if slice_item.down_img_content2 %} nick="{{ slice_item.down_img_content2 |e }}" {% endif %}
+                                   {% if slice_item.like_info %} info="{{ slice_item.like_info |e }}" {% endif %}
+                                   {% if slice_item.like_data_store %} btn_type="like" btn_url="{{ uclite_scheme }}://{{uclite_host}}/uclite/fb_fan_like/?url={{ slice_item.like_data_store |get_like_btn_url |add_facebook_domain|e }}&amp;fan=1" btn_forms=""
+                                      btn_cancel_url="{{ uclite_scheme }}://{{uclite_host}}/uclite/fb_fan_like/?url={{ slice_item.like_data_store |get_like_btn_url |add_facebook_domain|e }}&amp;unfan=1" btn_cancel_forms="" {% endif %}
+                               >
+                             </item>
+                        </fbcard>
+                    {% endfor %}
+                    <!-- 横向滑动end-->
+                 {% elif  card_item.one_nest and ( (card_item.one_nest.nest_content_img and card_item.one_nest.nest_content_img.url) or card_item.one_nest.nest_content_mutil_imgs) and card_item.card_user_header and card_item.footer%} %}
+                      <fbcard type="embed"
+                         {% include 'fbcard_header.xml' %}{% include 'fbcard_header_title.xml' %}{% include 'fbcard_footer.xml' %}
+                          >
+                            <!-- 嵌套begin-->
+                             <fbcard type="photo"
+                                 {% if card_item.one_nest.header %}
+                                     {% if  card_item.one_nest.header.user_name %} username="{{ card_item.one_nest.header.user_name|e}}" {% endif %}
+                                     {% if card_item.one_nest.header.user_icon %} portrait="{{ card_item.one_nest.header.user_icon|url_img_filter |e}}" {% endif %}
+                                     {% if card_item.one_nest.header.header_href %} profile="{{ card_item.one_nest.header.header_href |add_facebook_domain|e}}" {% endif %}
+                                     {% if card_item.one_nest.header.real_info  %} meta="{{ card_item.one_nest.header.real_info |e}}" {% endif %}
+                                     {% if card_item.one_nest.header.meta_type  %} meta_type="{{ card_item.one_nest.header.meta_type |e}}" {% endif %}
+
+                                     {% if card_item.one_nest.header.like_data_store %} user_btn_type="like" user_btn_url="{{ uclite_scheme }}://{{uclite_host}}/uclite/fb_fan_like/?url={{ card_item.one_nest.header.like_data_store|get_fan_like_url| add_facebook_domain|e }}&amp;fan=1"  user_btn_forms=""
+                                        user_btn_cancel_url="{{ uclite_scheme }}://{{uclite_host}}/uclite/fb_fan_like/?url={{ card_item.one_nest.header.like_data_store|get_fan_like_url| add_facebook_domain|e  }}&amp;unfan=1"  user_btn_cancel_forms=""
+                                     {% endif %}
+                                     {% if card_item.one_nest.header.friend_data_store  %} user_btn_type="friend"
+                                        user_btn_url="{{ uclite_scheme }}://{{uclite_host}}/uclite/fb_add_friend/?url=https%3a%2f%2fm.facebook.com%2fa%2fmobile%2ffriends%2fadd_friend.php" user_btn_forms="{{ card_item.one_nest.header.friend_data_store|data_store_to_str|e }}"
+                                        user_btn_cancel_url="{{ uclite_scheme }}://{{uclite_host}}/uclite/fb_add_friend/?url=https%3a%2f%2fm.facebook.com%2fa%2ffriendrequest%2fcancel%2findex.php" user_btn_cancel_forms="{{ card_item.one_nest.header.friend_cancle_data_store|cancel_data_store_to_str|e }}"
+                                     {% endif %}
+                                 {% endif %}
+                                 {% if card_item.one_nest.content%} content=" {{  card_item.one_nest.content |e}}  " {% endif %}
+                             >
+                                {% if card_item.one_nest.nest_content_img  %}
+                                    <item {% if  card_item.one_nest.nest_content_img.url  %} img="{{ card_item.one_nest.nest_content_img.url|url_img_filter|e }}" {% endif %}
+                                        {% if card_item.one_nest.nest_content_img.style  %} width="{{ card_item.one_nest.nest_content_img.style |get_img_width | e }}" height="{{ card_item.one_nest.nest_content_img.style |get_img_height | e }}" {% endif %}
+                                        {% if card_item.one_nest.nest_content_img.href  %} url="{{ card_item.one_nest.nest_content_img.href |add_facebook_domain|e }}" {% endif %}
+                                        >
+                                    </item>
+                                {% endif %}
+                                {% if card_item.one_nest.nest_card  %}
+                                    <item {% if  card_item.one_nest.nest_card.content  %} content="{{ card_item.one_nest.nest_card.content|e }}" {% endif %}
+                                          {% if card_item.one_nest.nest_card.vido_url  %} url="{{ card_item.one_nest.nest_card.vido_url |url_img_filter|e }}" {% endif %}
+                                        >
+                                    </item>
+                                {% endif %}
+                                {% if card_item.one_nest.nest_content_mutil_imgs  %}
+                                    {% for img_item in card_item.one_nest.nest_content_mutil_imgs  %}
+                                        <item {% if  img_item.url  %} img="{{ img_item.url|url_img_filter|e }}" {% endif %}
+                                       {% if img_item.a_style  %} top="{{ img_item.a_style|get_imgs_top }}" left="{{ img_item.a_style|get_imgs_left }}"  width="{{ img_item.a_style|get_imgs_width }}" height="{{ img_item.a_style |get_imgs_height | e }}" {% endif %}
+                                       {% if img_item.href  %} url="{{ img_item.href |add_facebook_domain|e }}" {% endif %}
+                                        >
+                                        </item>
+                                    {% endfor %}
+                                {% endif %}
+                             </fbcard>
+                            <!-- 嵌套end-->
+                       </fbcard>
+                 {% elif card_item.video_card%}
+                       <fbcard type="video"
+                         {% include 'fbcard_header.xml' %}{% include 'fbcard_header_title.xml' %}{% include 'fbcard_footer.xml' %}
+                          >
+                       <item {% if card_item.video_card.image %} img="{{ card_item.video_card.image |url_img_filter |e }}" {% endif %}
+                                  {% if card_item.video_card.data_store %} url="{{ card_item.video_card.data_store|get_video_src |e }}" {% endif %}
+                                  width="0px" height="0px"
+                                  {% if card_item.video_card.focus_info and card_item.video_card.focus_info.header %} name="{{ card_item.video_card.focus_info.header |e }}" {% endif %}
+                                  {% if card_item.video_card.focus_info and card_item.video_card.focus_info.like %} info="{{ card_item.video_card.focus_info.like |e }}" {% endif %}
+                                  {% if card_item.video_card.button %} btn_type="like" btn_url="{{ uclite_scheme }}://{{uclite_host}}/uclite/fb_fan_like/?url={{ card_item.video_card.button |get_like_btn_url |add_facebook_domain|e }}&amp;fan=1" btn_forms=""
+                                      btn_cancel_url="{{ uclite_scheme }}://{{uclite_host}}/uclite/fb_fan_like/?url={{ card_item.video_card.button |get_like_btn_url |add_facebook_domain|e }}&amp;unfan=1" btn_cancel_forms="" {% endif %}
+                                 >
+                                </item>
+                     </fbcard>
+                 {% elif card_item.friend_card_list %}
+                     <fbcard type="friend" username="People You May Know"  {% if card_item.friend_card_list.more  %}  more_url="{{card_item.friend_card_list.more|e }}"  {% endif %}>
+                        {% if card_item.friend_card_list.add_friend_list %}
+                            {% for foo in  card_item.friend_card_list.add_friend_list %}
+                                <item  {% if foo.image %} portrait="{{ foo.image | url_img_filter|e}}" {% endif %} {% if foo.xout %} close_url="{{ foo.xout |add_facebook_domain|e }}"  close_forms="" {% endif %}
+                                    {% if foo.name %} name=" {{ foo.name  }}" {% endif %}  {% if foo.tips %} relate="{{ foo.tips|e }}"  {% endif %}
+                                    {% if foo.button_text %} btn_text="{{ foo.button_text|e }}" {% endif %}
+                                    {% if foo.add_friend_href %} btn_url="{{ foo.add_friend_href|add_facebook_domain|e}}" {% endif %}
+                                    {% if foo.add_friend_data_store %}  btn_forms="{{foo.add_friend_data_store| data_store_to_str|e }}" {% endif %}
+                                    btn_cancel_url="{{ uclite_scheme }}://{{uclite_host}}/uclite/fb_add_friend/?url=https%3a%2f%2fm.facebook.com%2fa%2ffriendrequest%2fcancel%2findex.php" {% if foo.cancel_friend %}  btn_cancel_forms="{{ foo.cancel_friend |data_store_to_str |e}}" {% endif %}>
+                                </item>
+                            {% endfor %}
+                        {% endif %}
+                    </fbcard>
+                 {% else %}
+                     {% if card_item.card_user_header and card_item.footer and card_item.content and not card_item.content_imgs and not card_item.slice_card and not card_item.video_card
+                                 and not card_item.content_img  and not card_item.one_nest and not card_item.share_info and not card_item.focus_card %}
+                        <fbcard type="photo"
+                         {% include 'fbcard_header.xml' %}{% include 'fbcard_header_title.xml' %}{% include 'fbcard_footer.xml' %}
+                           >
+                     </fbcard>
+                     {% endif %}
+                 {% endif %}
+            {% endfor %}
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+    </list>
+</page>

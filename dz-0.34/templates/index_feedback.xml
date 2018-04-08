@@ -1,0 +1,13 @@
+<page id="0" version="1.0" org_title="{{ org_title|e }}" origin="http://huntnews.id" title="{{title|e}}">
+    <toolbar type="back" style="border-color:#ffdddddd; border-bottom-width:1; background-color:#F4FFFFFF">
+        <button icon="main" target="parent" url="http://{{uclite_host}}/uclite/?url=http%3A%2F%2Fwww.huntnews.id%2Fp%2Findex%3Fuc_param_str%3Ddnfrpfbivesscpgimibtbmntnisieijblauputoggdnw"></button>
+    </toolbar>
+
+    <flexbox style="padding:20;">
+        <text style="relatfont-color:gray">{{desc|e}}</text>
+        <input form="feedback" name="detail" type="text" style="height:20%; border-radius:3; border-width:1; border-color:#E1E1E1; margin-top:10; padding:5; font-color:#414141" placeholder="{{placeholder|e}}"/>
+        <input type="hiden" name="url" value="{{ ref_url|e }}"/>
+        <input type="hiden" name="reasons" value="{{ ref_url|e }}"/>
+        <button form="feedback" style="background-color:#1997E9; font-color:white; margin-top:20; border-radius:5;" method="post" type="submit" url="http://{{uclite_host}}/uclite/result_feedback/?url=http%3A%2F%2Fwww.huntnews.id%2Fapi%2Ffeedback%3Fuc_param_str%3Ddnfrpfbivesscpgimibtbmntnisieijblauputoggdnw%26type%3Dindex">{{btn_text|e}}</button>
+    </flexbox>
+</page>

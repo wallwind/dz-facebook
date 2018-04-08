@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<readmore id="content_read_more" remote="true">
+{% for span in p_list %}
+    <text class="india_news_content">{{span|e}}</text>
+{% endfor %}
+</readmore>

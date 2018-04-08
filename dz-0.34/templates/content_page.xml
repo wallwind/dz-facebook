@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<page id="0" version="1.0" origin="{{url|e}}" org_title="{{ org_title|e }}" icon="http://www.huntnews.id/public/c/widget/header/img/logo-id_9da0d99.png">
+    <toolbar type="back" style="border-color:#ffdddddd; border-bottom-width:1; background-color:#F4FFFFFF" title_type="icon">
+        <button icon="feedback"
+                url="http://{{uclite_host}}/uclite/feedback_detail?url=http%3A%2F%2Fwww.huntnews.id%2Fp%2Ffeedback%3Ftype%3Ddetail%26uc_param_str%3Ddnfrpfbivesscpgimibtbmntnisieijblauputoggdnw&amp;ref={{ url|urlencode|e }}" target="blank"> </button>
+        <button icon="main" target="parent" url="http://{{uclite_host}}/uclite/?url=http%3A%2F%2Fwww.huntnews.id%2Fp%2Findex%3Fuc_param_str%3Ddnfrpfbivesscpgimibtbmntnisieijblauputoggdnw"> </button>
+    </toolbar>
+    {% if news %}
+    <readmore id="content_read_more" remote="true" {% if news and news.content and news.content.ext_content %} tip="{{news.content.ext_content.more_btn_text|e}}"
+url="http://{{uclite_host}}/uclite/content_append?url=http%3A%2F%2Fwww.huntnews.id%2Fw%2Farticle%2F{{ news.id }}%3Fuc_param_str%3Ddnfrpfbivesscpgimibtbmntnisieijblauputoggdnw%26_pagelets%3Darticle.page%26_t%3D{{ random_time }}&amp;id=news_content" {% endif %} icon="down" button_style="icon-direction:right;icon-space:12">
+        <text class="india_news_title" style="font-size: 20">{{news.title|e}}</text>
+        <info publish_time="{{news.time|e}}" author="{{news.from|e}}"/>
+        {% if news and news.content and news.content.img %}
+            <image src="{{news.content.img.src|e}}" url="" target="blank" ratio="{{ news.content.img.width|img_ratio(news.content.img.height) }}" style="background-color:#EEEEEE"/>
+        {% endif %}
+        {% for span in news.content.p_list %}
+             {% if span in news.content.img_list_key %}
+                    {% for foo in news.content.img_list %}
+                         {% if foo.id == span %}
+                            <image  src="{{ foo.url|e }}" url="" target="blank"  ratio="{{ foo.width|img_ratio(foo.height) }}" style="background-color:#EEEEEE"/>
+                        {% endif %}{% endfor %}
+             {% else %} <text class="india_news_content">{{span|strip|e}}</text>
+             {% endif %}{% endfor %}{% if not news.content.p_list and news.content.p_text%}<text class="india_news_content">{{news.content.p_text|strip|e}}</text>
+    {% endif %}
+    </readmore>
+    {% endif %}
+    <nav style="border-color:#efefef; border-top-width:2; border-bottom-width:2">
+        {% if news and news.prev_btn %}
+        <button url="http://{{uclite_host}}/uclite/{% if '/detail/' in news.prev_btn.href %}content/{% endif %}?url={{news.prev_btn.href|urlencode|e}}" target="{% if '/detail/' in news.prev_btn.href %}self/{% else %}parent{% endif %}">{{news.prev_btn.text|e}}</button>
+        {% endif %}
+    {% if news and news.next_btn %}
+        <button url="http://{{uclite_host}}/uclite/content/?url={{news.next_btn.href|urlencode|e}}" target="self">{{news.next_btn.text|e}}</button>
+    {% endif %}
+    </nav>
+    <footer></footer>
+    {% if more_list %}
+        <h>{{more_list.text|e}}</h>
+        <readmore id="more_list" remote="false"{% if more_list.ext_item %} show_num="3" tip="{{more_list.ext_item.text|e}}" {% endif %} icon="down" button_style="icon-direction:right;icon-space:12" >
+            {% for item in more_list.item_list %}
+                <news class="news_right_image" ratio="1.58" url="http://{{uclite_host}}/uclite/content/?url={{item.href|urlencode|e}}"
+                      relate_views="{{item.percent|e}}"  title="{{item.text|e}}"
+                      meta="{{item.meta|replace('&nbsp','')|strip|e}}"  target="self">
+                    {% if item.img %}
+                        <image src="{{ item.img|e }}"/>
+                    {% endif %}
+                    {% for img_url in item.img_list %}
+                        <image src="{{ img_url|e }}"/>
+                    {% endfor %}
+                        </news>
+            {% endfor %}
+           {% if more_list.ext_item %}
+               {% for item in more_list.ext_item.item_list %}
+                    <news class="news_right_image" ratio="1.58" url="http://{{uclite_host}}/uclite/content/?url={{item.href|urlencode|e}}"
+                          relate_views="{{item.percent|e}}"  title="{{item.text|e}}" img="{{item.img|e}}"
+                          meta="{{ item.meta|replace('&nbsp','')|strip|e}}"   target="self">
+                        {% if item.img %}
+                            <image src="{{ item.img|e }}"/>
+                        {% endif %}
+                        {% for img_url in item.img_list %}
+                            <image src="{{ img_url|e }}"/>
+                        {% endfor %}
+                            </news>
+                {% endfor %}
+           {% endif %}
+        </readmore>
+        <footer></footer>
+    {% endif %}
+    {% if next_list %}
+        <h>{{next_list.text|e}}</h>
+        <readmore id="next_list" remote="true"   tip="{{next_list.more_btn_text|e}}"
+        url="http://{{uclite_host}}/uclite/content_list?url=http%3A%2F%2Fwww.huntnews.id%2Fw%2Flist%2F{{ next_list.list_key|urlencode|e }}%3F_fetch_more%3D1%26size%3D3%26chncat%3D{{ next_list.list_chncat|urlencode|e }}%26_fetch_type%3Dpos%26channel%3D{{ next_list.list_key|urlencode|e }}%26renderarg%3DshowPercent%26_pos%3D{{ next_list.last_pos|urlencode|e }}%26uc_param_str%3Ddnfrpfbivesscpgimibtbmntnisieijblauputoggdnw%26_pagelets%3Dlist.items%26_t%3D0.6183808775334203{{ random_time }}&amp;id=next_list" icon="down" button_style="icon-direction:right;icon-space:12">
+            {% for item in next_list.item_list %}
+                <news class="news_right_image" ratio="1.58" url="http://{{uclite_host}}/uclite/content/?url={{item.href|urlencode|e}}"
+                      relate_views="{{item.percent|e}}"  title="{{item.text|e}}"
+                      meta="{{ item.meta|replace('&nbsp','')|strip|e }}"   target="self">
+                    {% if item.img %}
+                        <image src="{{ item.img|e }}"/>
+                    {% endif %}
+                    {% for img_url in item.img_list %}
+                        <image src="{{ img_url|e }}"/>
+                    {% endfor %}
+                </news>
+            {% endfor %}
+        </readmore>
+        <footer></footer>
+    {% endif %}
+    {% if hot_list %}
+        <h>{{hot_list.text|e}}</h>
+        <readmore id="hot_list" remote="true" {% if hot_list %} tip="{{hot_list.more_btn_text|e}}"
+        url="http://{{uclite_host}}/uclite/content_list?url=http%3A%2F%2Fwww.huntnews.id%2Fw%2Flist%2FhotNews%3F_fetch_more%3D1%26size%3D3%26chncat%3D{{ hot_list.list_chncat|urlencode|e }}%26_fetch_type%3Dpage%26channel%3DhotNews%26renderarg%3D%26page%3D{{ hot_list.next_page|urlencode|e }}%26firstPage%3D{{ hot_list.first_page|urlencode|e }}%26uc_param_str%3Ddnfrpfbivesscpgimibtbmntnisieijblauputoggdnw%26_pagelets%3Dlist.items%26_t%3D{{ random_time }}&amp;id=hot_list" {% endif %} icon="down" button_style="icon-direction:right;icon-space:12">
+                {% for item in hot_list.item_list %}
+                    <news class="news_right_image" ratio="1.58" url="http://{{uclite_host}}/uclite/content/?url={{item.href|urlencode|e}}"
+                          views="{{item.views|e}}"  title="{{item.text|e}}"
+                          publish_time="{{item.time|e}}" target="self">
+                        {% if item.img %}
+                            <image src="{{ item.img|e }}"/>
+                        {% endif %}
+                        {% for img_url in item.img_list %}
+                            <image src="{{ img_url|e }}"/>
+                        {% endfor %}
+                            </news>
+                {% endfor %}
+        </readmore>
+        <footer></footer>
+    {% endif %}
+    {% if site_map %}
+    <flexbox id="3" style="border-color:#efefef; border-bottom-width:2">
+        <h>{{site_map.title|e}}</h>
+        {% for item in site_map.item_list %}
+            <button style="flex: 0 0 0.5; font-size:15; font-color:#414141; icon-space:10; text-align:left; padding-left:25"
+                    icon="rarrow"
+                    url="http://{{uclite_host}}/uclite/?url={{ item.href|urlencode|e }}" target="parent">{{item.text|e}}</button>
+        {% endfor %}
+    </flexbox>
+    {% endif %}
+    {% if footer and footer.from and footer.feedback %}
+        <footer>
+            <text style="font-color:#bcbcbc; font-size:12">Berita ini berasal dari &lt;a href="{{ footer.from.href|e }}"&gt;{{ footer.from.text|e }}&lt;/a&gt;. Jika anda menemukan masalah atau memiliki {{ footer.feedback.text|e }}, silakan beritahu kami! &lt;a href="http://{{uclite_host}}/uclite/feedback_detail?url=http%3A%2F%2Fwww.huntnews.id%2Fp%2Ffeedback%3Ftype%3Ddetail%26uc_param_str%3Ddnfrpfbivesscpgimibtbmntnisieijblauputoggdnw&amp;ref={{ footer.feedback.href|e }}"&gt;{{ footer.feedback.text|e }}&lt;/a&gt;</text>
+        </footer>
+    {% endif %}
+</page>
